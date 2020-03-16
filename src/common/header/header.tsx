@@ -1,4 +1,5 @@
 import React,{ Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { 
     HeaderWrapper, 
     Logo, 
@@ -15,10 +16,14 @@ export interface Props {
 }
  
 export interface State {
+    focused: boolean;
     
 }
  
 class Header extends Component {
+   public state: State = {
+        focused: false
+    }
     render() { 
         return ( 
             <HeaderWrapper>
@@ -31,8 +36,20 @@ class Header extends Component {
                         <i className='iconfont'>&#xe636;</i>
                     </NavItem>
                     <SearchWrapper>
-                        <NavSearch></NavSearch>
-                        <i className='iconfont'>&#xe60a;</i>
+                        <CSSTransition
+                            in={this.state.focused}
+                            timeout={400}
+                            classNames='slide'
+                        >
+                            <NavSearch
+                                className={this.state.focused ? 'focused' : ''}
+                                onFocus={this.handleInputFocus}
+                                onBlur={this.handleInputBlur}
+                            >
+
+                            </NavSearch>
+                        </CSSTransition>
+                        <i className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe60a;</i>
                     </SearchWrapper>
                 </Nav>
                 <Addition>
@@ -44,6 +61,17 @@ class Header extends Component {
                 </Addition>
             </HeaderWrapper>
          );
+    };
+
+    public handleInputFocus = () => {
+        this.setState({
+            focused: true,
+        })
+    };
+    public handleInputBlur = () => {
+        this.setState({
+            focused: false,
+        })
     }
 }
  
