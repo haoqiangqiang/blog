@@ -17,13 +17,19 @@ import {
     SearchInfoList,
 } from './style';
 import { State } from '../../store/reducer';
-import  { actionCreators }  from './store';
+import { actionCreators }  from './store';
 
 interface Props {
     focused: boolean,
-    list: string[],
+    list: any,
+    page: number,
+    totalPage: number,
+    mouseIn: boolean,
     handleInputFocus: any,
     handleInputBlur: any,
+    handleMouseEnter: any,
+    handleMouseLeave:any,
+    handleChangePage: any,
 }
 
 class Header extends Component<Props> {
@@ -71,20 +77,26 @@ class Header extends Component<Props> {
     )}
 
     private getListArea() {
-        const { focused, list } = this.props;
-        if(focused){
+        const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+        const jsList = list.toJS();
+        const pageList = [];
+        if (jsList.length) {
+            for (let i = (page - 1) * 10; i < page * 10; i++) {
+                pageList.push(<SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>)
+            }
+        }
+        if(focused || mouseIn){
             return (
-                <SearchInfo >
+                <SearchInfo 
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}    
+                >
                         <SearchInfoTitle>
                             热门搜索
-                            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
                         </SearchInfoTitle>
                         <SearchInfoList>
-                            {
-                                list.map((item) => {
-                                    return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-                                })
-                            }
+                            {pageList}
                         </SearchInfoList>
                     </SearchInfo>
             )} else {
@@ -98,7 +110,10 @@ class Header extends Component<Props> {
 const mapStateToProps = (state: State) => {
     return {
         focused: state.header.get('focused') as boolean,
-        list: state.header.get('list') as string[],
+        list: state.header.get('list'),
+        page: state.header.get('page') as number,
+        totalPage: state.header.get('totalPage'),
+        mouseIn: state.header.get('mouseIn'),
     };
 }
 
@@ -110,7 +125,18 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         handleInputBlur() {
             dispatch(actionCreators.searchBlur());
-        }
+        },
+        handleMouseEnter() {
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave() {
+            dispatch(actionCreators.mouseLeave());
+        },
+        handleChangePage(page: number, totalPage: number) {
+            page < totalPage ? 
+                dispatch(actionCreators.changePage(page + 1)) : 
+                dispatch(actionCreators.changePage(1))
+        },
     }
 }
  
