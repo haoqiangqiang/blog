@@ -10,6 +10,11 @@ import {
     Addition, 
     Button, 
     SearchWrapper,
+    SearchInfo,
+    SearchInfoTitle,
+    SearchInfoSwitch,
+    SearchInfoItem,
+    SearchInfoList,
 } from './style';
 import { State } from '../../store/reducer';
 import  { actionCreators }  from './store';
@@ -18,6 +23,27 @@ interface Props {
     focused: boolean,
     handleInputFocus: any,
     handleInputBlur: any,
+}
+
+const getListArea = (show: boolean) => {
+    if(show){
+        return (
+            <SearchInfo >
+                    <SearchInfoTitle>
+                        热门搜索
+                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                    </SearchInfoTitle>
+                    <SearchInfoList>
+                        <SearchInfoItem>教育</SearchInfoItem>
+                        <SearchInfoItem>生活</SearchInfoItem>
+                        <SearchInfoItem>留学</SearchInfoItem>
+                        <SearchInfoItem>投稿</SearchInfoItem>
+                        <SearchInfoItem>PHP</SearchInfoItem>
+                    </SearchInfoList>
+                </SearchInfo>
+        )} else {
+            return null;
+        }
 }
 
 const Header = (props: Props) => {
@@ -46,6 +72,7 @@ const Header = (props: Props) => {
                     </NavSearch>
                 </CSSTransition>
                 <i className={props.focused ? 'focused iconfont' : 'iconfont'}>&#xe60a;</i>
+                {getListArea(props.focused)}
             </SearchWrapper>
         </Nav>
         <Addition>
