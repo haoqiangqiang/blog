@@ -33,6 +33,7 @@ interface Props {
 }
 
 class Header extends Component<Props> {
+    public spinIcon: any;
     public constructor(props: Props) {
         super(props);
     }
@@ -62,7 +63,7 @@ class Header extends Component<Props> {
     
                         </NavSearch>
                     </CSSTransition>
-                    <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe60a;</i>
+                    <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>&#xe60a;</i>
                     {this.getListArea()}
                 </SearchWrapper>
             </Nav>
@@ -93,7 +94,10 @@ class Header extends Component<Props> {
                 >
                         <SearchInfoTitle>
                             热门搜索
-                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
+                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
+                                <i ref={(icon) => {this.spinIcon = icon}} className='iconfont spin'>&#xe851;</i>
+                                换一批
+                            </SearchInfoSwitch>
                         </SearchInfoTitle>
                         <SearchInfoList>
                             {pageList}
@@ -132,7 +136,14 @@ const mapDispatchToProps = (dispatch: any) => {
         handleMouseLeave() {
             dispatch(actionCreators.mouseLeave());
         },
-        handleChangePage(page: number, totalPage: number) {
+        handleChangePage(page: number, totalPage: number, icon: any) {
+            let originAngle = icon.style.transform.replace(/[^0-9]/ig, '');
+            if (originAngle) {
+                originAngle = parseInt(originAngle, 10)
+            } else {
+                originAngle = 0;
+            }
+            icon.style.transform = `rotate(${originAngle + 360}deg)`;
             page < totalPage ? 
                 dispatch(actionCreators.changePage(page + 1)) : 
                 dispatch(actionCreators.changePage(1))
