@@ -1,0 +1,67 @@
+{
+    "success": true,
+    "data": {
+        "topicList": [
+            {
+                "id": 1,
+                "title": "社会热点",
+                "imgUrl": "http://img2.imgtn.bdimg.com/it/u=282090018,1409787590&fm=26&gp=0.jpg"
+            },
+            {
+                "id": 2,
+                "title": "手绘",
+                "imgUrl": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2617042890,3660134204&fm=15&gp=0.jpg"
+            }
+        ],
+        "articleList": [
+            {
+                "id": 1,
+                "title": "百度网盘终于良心了一回，官方版本，永久不限速！",
+                "desc": "哈喽，我是小欣，你们好呀！ 下载速度稳定、安全无痛苦，还完全免费，再加上个无广告。 这里官方指的是爱奇艺万能联播，目前仅支持PC版。 这样操作估...",
+                "imgUrl": "https://upload-images.jianshu.io/upload_images/21447234-3053356df4a10db1?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+            },
+            {
+                "id": 2,
+                "title": "武汉疫情之后，中国即将发生的10大变化！",
+                "desc": "来源：水木然学社 ID：smr8700 新型冠状病毒成了2020年飞出来的一只黑天鹅！ 这只黑天鹅的出现，让多少企业、多少人乱了阵脚？ 但是，...",
+                "imgUrl": "https://upload-images.jianshu.io/upload_images/18875966-172ec0401fa2d851?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+            },
+            {
+                "id": 3,
+                "title": "何炅私宅内景首曝光：真正高级的人生，是不断做减法",
+                "desc": "最近，因为疫情的关系，一档云综艺《嘿，你在干嘛呢》应运而生。 这档节目，主要是以VLOG的形式，记录何炅、李维嘉、杜海涛温馨有趣的宅家生活。 因...",
+                "imgUrl": "https://upload-images.jianshu.io/upload_images/1202579-52329d7fba765183?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+            },
+            {
+                "id": 4,
+                "title": "如何快速排查死锁？如何避免死锁？",
+                "desc": "前言 相信程序员都会碰上这样的问题，Java死锁如何排查？又如何解决呢？那么，何为死锁呢？死锁是指两个或两个以上的进程在执行过程中，由于竞争资源...",
+                "imgUrl": "https://upload-images.jianshu.io/upload_images/15590149-bc8fc3db8fc3fb61?imageMogr2/auto-orient/strip|imageView2/1/w/360/h/240"
+            },
+            {
+                "id": 5,
+                "title": "避孕套（一）初露端倪",
+                "desc": "两年前的夏天，一天下午，她休息了，从上班的城市回到家。往衣架上挂衣服时，看到他的外套，鬼使神差地随手翻了一下他的上衣口袋。 不料，摸到一个...",
+                "imgUrl": ""
+            }
+        ],
+        "recommendList": [
+            {
+                "id": 1,
+                "imgUrl": "http: //cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png"
+            },
+            {
+                "id": 2,
+                "imgUrl": "http: //cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png"
+            },
+            {
+                "id": 3,
+                "imgUrl": "http: //cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png"
+            },
+            {
+                "id": 4,
+                "imgUrl": "http: //cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png"
+            }
+        ]
+    }
+}
