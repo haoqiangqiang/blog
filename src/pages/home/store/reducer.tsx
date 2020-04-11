@@ -1,5 +1,6 @@
 // import * as actionTypes from './actionTypes'
 import { fromJS, Map } from 'immutable';
+import * as constants from './constants'
 
 export interface Topic {
     id: number,
@@ -30,7 +31,7 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action: any) => {
         switch(action.type) {
-            case 'change_home_data':
+            case constants.CHANGE_HOME_DATA:
               return  state.merge({
                     topicList: fromJS(action.topicList),
                     articleList: fromJS(action.articleList),

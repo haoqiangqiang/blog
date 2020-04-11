@@ -9,7 +9,7 @@ import List from './components/List';
 import Recommend from './components/Recommend';
 import Topic from './components/Topic';
 import Writer from './components/Writer';
-import axios from 'axios';
+import { actionCreators } from './store';
 
 export interface Props {
     changeHomeData: any,
@@ -35,20 +35,12 @@ class Home extends React.Component<Props, State> {
          );
     }
     componentDidMount() {
-        axios.get('/api/home.json').then(res => {
-            const result = res.data.data;
-            const action = {
-                type: 'change_home_data',
-                topicList: result.topicList,
-                articleList: result.articleList,
-                recommendList: result.recommendList,
-            }
-            this.props.changeHomeData(action);
-        }); 
+        this.props.changeHomeData();
     }
 }
  const mapDispatch = (dispatch: any) => ({
-    changeHomeData(action: any) {
+    changeHomeData() {
+        const action = actionCreators.getHomeInfo();
         dispatch(action)
     }
  })
