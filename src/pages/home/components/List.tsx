@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ListItem, ListInfo } from '../style';
+import { ListItem, ListInfo, LoadMore } from '../style';
 import { Article } from '../store/reducer';
+import { actionCreators } from '../store';
 
 export interface Props {
     list: any,
+    getMoreList: any,
+    page: number,
 }
  
 export interface State {
@@ -16,7 +19,7 @@ class List extends React.Component<Props, State> {
         super(props)
     }
     render() { 
-        const { list } = this.props;
+        const { list, getMoreList, page } = this.props;
         const jsList = list.toJS();
         return ( 
             <div>
@@ -33,12 +36,20 @@ class List extends React.Component<Props, State> {
                         )
                     })
                 }
+                <LoadMore onClick={() => getMoreList(page)}>浏览更多</LoadMore>
             </div>
          );
     }
 }
  
 const mapState = (state: any) => ({
-    list: state.home.get('articleList')
+    list: state.home.get('articleList'),
+    page: state.home.get('articlePage'),
 })
-export default connect(mapState)(List);
+
+const mapDispatch = (dispatch: any) => ({
+    getMoreList(page: number) {
+        dispatch(actionCreators.getMoreList(page));
+    }
+})
+export default connect(mapState, mapDispatch)(List);
