@@ -13,8 +13,8 @@ function App() {
     <Provider store={store}>
         <Globalstyle />
         <IconGlobalStyle />
-        <Header />
         <Router>
+            <Header />
             <Route path='/' exact component={Home}></Route>
             <Route path='/detail' exact component={Detail}></Route>
         </Router>

@@ -18,6 +18,7 @@ import {
 } from './style';
 import { State } from '../../store/reducer';
 import { actionCreators }  from './store';
+import { Link } from 'react-router-dom';
 
 interface Props {
     focused: boolean,
@@ -41,7 +42,9 @@ class Header extends Component<Props> {
         const {focused, list, handleInputBlur, handleInputFocus} = this.props;
         return (
             <HeaderWrapper>
-            <Logo />
+            <Link to='/'>
+                <Logo />
+            </Link>
             <Nav>
                 <NavItem className='left active'>首页</NavItem>
                 <NavItem className='left'>下载App</NavItem>

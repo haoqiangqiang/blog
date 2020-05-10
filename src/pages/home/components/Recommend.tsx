@@ -10,7 +10,7 @@ export interface State {
     
 }
  
-class Recommend extends React.Component<Props, State> {
+class Recommend extends React.PureComponent<Props, State> {
     public constructor (props: Props) {
         super(props);
     }

@@ -10,7 +10,7 @@ export interface State {
     
 }
  
-class Topic extends React.Component<Props, State> {
+class Topic extends React.PureComponent<Props, State> {
     public constructor(props: Props) {
         super(props)
     }

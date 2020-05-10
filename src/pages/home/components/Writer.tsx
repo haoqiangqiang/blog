@@ -9,7 +9,7 @@ export interface State {
     
 }
  
-class Writer extends React.Component<Props, State> {
+class Writer extends React.PureComponent<Props, State> {
     render() { 
         return ( 
             <WriterWrapper>writer</WriterWrapper>

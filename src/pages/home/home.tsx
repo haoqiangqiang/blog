@@ -22,7 +22,7 @@ export interface State {
     
 }
  
-class Home extends React.Component<Props, State> {
+class Home extends React.PureComponent<Props, State> {
     render() { 
         return ( 
             <HomeWrapper>
