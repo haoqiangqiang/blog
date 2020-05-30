@@ -11,6 +11,7 @@ export interface Props {
     title: string,
     content: string,
     getDetail: any,
+    match: any,
 }
  
 export interface State {
@@ -31,7 +32,7 @@ class Detail extends React.Component<Props, State> {
          );
     }
     componentDidMount() {
-        this.props.getDetail();
+        this.props.getDetail(this.props.match.params.id);
     }
 }
  
@@ -40,8 +41,8 @@ const mapState = (state: any) => ({
     content: state.detail.get('content'),
 })
 const mapDispatch = (dispatch: any) => ({
-    getDetail() {
-        dispatch(actionCreators.getDetail());
+    getDetail(id: number) {
+        dispatch(actionCreators.getDetail(id));
     }
 })
 export default connect(mapState, mapDispatch)(Detail);

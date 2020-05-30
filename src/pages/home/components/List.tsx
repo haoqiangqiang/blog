@@ -27,7 +27,7 @@ class List extends React.PureComponent<Props, State> {
                 {
                     jsList.map((item: Article) => {
                         return (
-                            <Link key={item.id} to='/detail'>
+                            <Link key={item.id} to={`/detail/${item.id}`}>
                                 <ListItem>
                                     <img  className='pic' src={item.imgUrl} alt=''/>
                                     <ListInfo>
