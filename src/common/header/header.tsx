@@ -79,10 +79,12 @@ class Header extends Component<Props> {
             </Nav>
             <Addition>
                 <Button className='reg'>注册</Button>
+                <Link to='/write'>
                 <Button className='writting'>
                     <i className='iconfont'>&#xe6e5;</i>
                     写文章
                 </Button>
+                </Link> 
             </Addition>
         </HeaderWrapper> 
     )}

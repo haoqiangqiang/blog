@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './common/header/header';
 import Home from './pages/home/home';
-import Detail from './pages/detail/detail';
+import Detail from './pages/detail/loadable';
 import Login from './pages/login/login';
+import Write from './pages/write/write';
 import { Globalstyle } from './style';
 import { IconGlobalStyle } from './statics/iconfont/iconfont';
 import store from './store';
@@ -18,6 +19,7 @@ function App() {
             <Header />
             <Route path='/' exact component={Home}></Route>
             <Route path='/login' exact component={Login}></Route>
+            <Route path='/write' exact component={Write}></Route>
             <Route path='/detail/:id' exact component={Detail}></Route>
         </Router>
     </Provider>
