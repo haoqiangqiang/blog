@@ -18,6 +18,7 @@ import {
 } from './style';
 import { State } from '../../store/reducer';
 import { actionCreators }  from './store';
+import { actionCreators as loginActionCreators} from '../../pages/login/store';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -26,11 +27,13 @@ interface Props {
     page: number,
     totalPage: number,
     mouseIn: boolean,
+    login: boolean,
     handleInputFocus: any,
     handleInputBlur: any,
     handleMouseEnter: any,
     handleMouseLeave:any,
     handleChangePage: any,
+    logout: any,
 }
 
 class Header extends Component<Props> {
@@ -39,7 +42,7 @@ class Header extends Component<Props> {
         super(props);
     }
     render() {
-        const {focused, list, handleInputBlur, handleInputFocus} = this.props;
+        const {focused, list, handleInputBlur, handleInputFocus, login, logout} = this.props;
         return (
             <HeaderWrapper>
             <Link to='/'>
@@ -48,7 +51,11 @@ class Header extends Component<Props> {
             <Nav>
                 <NavItem className='left active'>首页</NavItem>
                 <NavItem className='left'>下载App</NavItem>
-                <NavItem className='right'>登录</NavItem>
+                {
+                    login ? 
+                        <NavItem onClick={logout} className='right'>退出</NavItem> : 
+                        <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+                }
                 <NavItem className='right'>
                     <i className='iconfont'>&#xe636;</i>
                 </NavItem>
@@ -121,6 +128,7 @@ const mapStateToProps = (state: State) => {
         page: state.header.get('page') as number,
         totalPage: state.header.get('totalPage'),
         mouseIn: state.header.get('mouseIn'),
+        login: state.login.get('login'),
     };
 }
 
@@ -138,6 +146,9 @@ const mapDispatchToProps = (dispatch: any) => {
         },
         handleMouseLeave() {
             dispatch(actionCreators.mouseLeave());
+        },
+        logout() {
+            dispatch(loginActionCreators.logout());
         },
         handleChangePage(page: number, totalPage: number, icon: any) {
             let originAngle = icon.style.transform.replace(/[^0-9]/ig, '');
